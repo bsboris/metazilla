@@ -23,7 +23,7 @@ module Metazilla
     end
 
     def full_title
-      [title, app_title].flatten.compact.join(" | ")
+      [title, app_title].flatten.compact.join(Metazilla.configuration.separator)
     end
 
     def meta(name, content = nil)

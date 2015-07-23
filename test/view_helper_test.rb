@@ -109,4 +109,11 @@ class ViewHelperTest < ActionView::TestCase
 
     assert_equal "My app.", meta(:description)
   end
+
+  def test_custom_title_separator
+    Metazilla.configure { |c| c.separator = " > " }
+    set_path "posts", "index"
+
+    assert_equal "Posts list > My app", full_title
+  end
 end

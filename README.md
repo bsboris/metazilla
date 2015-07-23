@@ -28,6 +28,16 @@ And then execute:
 
 `title_tag` generates `<title>` tag with full title. Place this in your layout.
 
+#### Custom title separator
+
+If you want your title tag content to look like this: `My Application > My cool page`, tell Metazilla to use custom separator.
+
+config/initializers/metazilla.rb:
+
+    Metazilla.configure do |config|
+      config.separator = " > "
+    end
+
 ### Meta tags
 
 `meta :description, "My app description"` to set meta tag.
