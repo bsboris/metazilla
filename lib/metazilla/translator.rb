@@ -13,7 +13,7 @@ module Metazilla
     end
 
     def lookup_for_current_path(key)
-      lookup_recursively(key, [namespace, controller, action].flatten)
+      lookup_recursively(key, [namespace, controller, mapped_action].flatten)
     end
 
     private
@@ -33,6 +33,10 @@ module Metazilla
         return result if result
       end
       nil
+    end
+
+    def mapped_action
+      (Metazilla.configuration.mapping[action.to_sym] || action).to_s.freeze
     end
 
     def lookup_in_namespace(key, namespace = [])

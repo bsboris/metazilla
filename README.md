@@ -92,6 +92,18 @@ View:
 
     title # => User: John Doe
 
+### Action aliasing (:create and :update problem)
+
+Metaziila uses name of the current action for resolving titles, so when you submit a form and it fails to save, your rendered `new` template inside the `create` action. To avoid setting duplicated titles for both `new` and `create` (and `edit` and `update`), this actions is mapped in gem's configuration.
+If your application have similar non-RESTful pair of actions, your can add them to mapping:
+
+config/initializers/metazilla.rb:
+
+    Metazilla.configure do |config|
+      config.mapping[:perform_parse] = :parse
+    end
+
+Now you can define title only for `parse` action, `perform_parse` will use it automagically.
 
 ### Namespacing
 

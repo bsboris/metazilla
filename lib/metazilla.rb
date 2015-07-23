@@ -16,10 +16,11 @@ module Metazilla
   end
 
   class Configuration
-    attr_accessor :separator
+    attr_accessor :separator, :mapping
 
     def initialize
       @separator = ' | '
+      @mapping = { create: :new, update: :edit }
     end
   end
 end

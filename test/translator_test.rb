@@ -70,4 +70,13 @@ class TranslatorTest < Minitest::Test
   def test_lookup_for_current_path_with_namespace_fallback
     assert_equal "Admin users", translator("admin/users", "index").lookup_for_current_path(:title)
   end
+
+  def test_lookup_for_mapped_actions
+    assert_equal "New post", translator("posts", "create").lookup_for_current_path(:title)
+  end
+
+  def test_lookup_for_custom_mapped_actions
+    Metazilla.configure { |c| c.mapping[:test] = :new }
+    assert_equal "New post", translator("posts", "test").lookup_for_current_path(:title)
+  end
 end
