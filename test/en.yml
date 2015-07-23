@@ -1,0 +1,31 @@
+en:
+  app: My app
+  meta:
+    description: My app.
+
+  posts:
+    title: Posts
+    index:
+      title: Posts list
+      meta:
+        description: My posts list.
+    new:
+      title: New post
+    show:
+      title: Post %{post}
+  users:
+    title: Users
+
+  admin:
+    app: My admin app
+    posts:
+      title: Admin posts
+      index:
+        title: Admin posts list
+      new:
+        title: New admin post
+    users:
+      title: Admin users
+
+    web:
+      app: My web admin app
