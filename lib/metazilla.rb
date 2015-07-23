@@ -25,4 +25,5 @@ module Metazilla
   end
 end
 
+I18n.backend.class.send :include, I18n::Backend::Cascade
 ActionView::Base.send :include, Metazilla::ViewHelper

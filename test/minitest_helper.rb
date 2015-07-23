@@ -3,6 +3,8 @@ require "metazilla"
 
 require "minitest/autorun"
 
+ActiveSupport.test_order = :sorted
+
 class Minitest::Test
   def setup
     I18n.load_path = [File.join(File.dirname(__FILE__), "en.yml")]
@@ -10,5 +12,3 @@ class Minitest::Test
     Metazilla.reset_configuration
   end
 end
-
-ActiveSupport.test_order = :sorted

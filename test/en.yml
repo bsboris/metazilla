@@ -1,14 +1,12 @@
 en:
   app: My app
-  meta:
-    description: My app.
+  meta_description: My app.
 
   posts:
     title: Posts
     index:
       title: Posts list
-      meta:
-        description: My posts list.
+      meta_description: My posts list.
     new:
       title: New post
     show:

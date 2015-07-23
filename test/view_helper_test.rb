@@ -67,6 +67,18 @@ class ViewHelperTest < ActionView::TestCase
     assert_equal "Posts list | My app", full_title
   end
 
+  def test_loads_translations_with_namespace
+    set_path "admin/web/posts", "index"
+
+    assert_equal "My web admin app", app_title
+  end
+
+  def test_translation_cascades
+    set_path "missing/missing/posts", "index"
+
+    assert_equal "My app", app_title
+  end
+
   def test_overrides_loaded_translations
     set_path "posts", "index"
     title "New Title"
@@ -104,16 +116,23 @@ class ViewHelperTest < ActionView::TestCase
     assert_equal "My posts list.", meta(:description)
   end
 
-  def test_meta_translations_fallback
-    set_path "users", "index"
-
-    assert_equal "My app.", meta(:description)
-  end
-
   def test_custom_title_separator
     Metazilla.configure { |c| c.separator = " > " }
     set_path "posts", "index"
 
     assert_equal "Posts list > My app", full_title
+  end
+
+  def test_lookup_for_mapped_actions
+    set_path "posts", "create"
+
+    assert_equal "New post", title
+  end
+
+  def test_lookup_for_custom_mapped_actions
+    Metazilla.configure { |c| c.mapping[:test] = :new }
+    set_path "posts", "test"
+
+    assert_equal "New post", title
   end
 end

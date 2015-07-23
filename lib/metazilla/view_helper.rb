@@ -1,12 +1,10 @@
-require "metazilla/translator"
-
 module Metazilla
   module ViewHelper
     def title(value = nil)
       if value.present?
         _meta_store[:page_title] = value
       else
-        _meta_store[:page_title] || _translator.lookup_for_current_path(:title)
+        _meta_store[:page_title] || _meta_lookup("title")
       end
     end
 
@@ -14,7 +12,7 @@ module Metazilla
       if value.present?
         _meta_store[:app_title] = value
       else
-        _meta_store[:app_title] || _translator.lookup(:app)
+        _meta_store[:app_title] || _meta_lookup("app")
       end
     end
 
@@ -30,7 +28,7 @@ module Metazilla
       if content.present?
         _meta_store[name] = content
       else
-        _meta_store[name] || _translator.lookup_for_current_path(:"meta.#{name}")
+        _meta_store[name] || _meta_lookup("meta_#{name}")
       end
     end
 
@@ -44,8 +42,12 @@ module Metazilla
       @_meta_store ||= {}
     end
 
-    def _translator
-      @_translator ||= Translator.new(controller_path, action_name, controller.view_assigns.symbolize_keys)
+    def _meta_lookup(key)
+      options = controller.view_assigns.symbolize_keys
+      options[:cascade] = true
+      mapped_action = (Metazilla.configuration.mapping[action_name.to_sym] || action_name)
+
+      t [controller_path.split("/"), mapped_action, key].flatten.join("."), options
     end
   end
 end
