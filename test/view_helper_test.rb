@@ -135,4 +135,10 @@ class ViewHelperTest < ActionView::TestCase
 
     assert_equal "New post", title
   end
+
+  def test_fallbacks_silently
+    set_path "missing", "nothere"
+
+    assert_equal "My app", full_title
+  end
 end
