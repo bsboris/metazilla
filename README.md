@@ -1,5 +1,7 @@
 # Metazilla
 
+[![Code Climate](https://codeclimate.com/github/bsboris/metazilla/badges/gpa.svg)](https://codeclimate.com/github/bsboris/metazilla)
+
 Simple gem to deal with titles and meta tags for Rails 3+.
 
 ## Installation
