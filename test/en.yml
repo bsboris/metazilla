@@ -1,5 +1,5 @@
 en:
-  app: My app
+  application: My app
   meta_description: My app.
 
   posts:
@@ -15,7 +15,7 @@ en:
     title: Users
 
   admin:
-    app: My admin app
+    application: My admin app
     posts:
       title: Admin posts
       index:
@@ -26,4 +26,4 @@ en:
       title: Admin users
 
     web:
-      app: My web admin app
+      application: My web admin app

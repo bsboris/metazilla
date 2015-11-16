@@ -12,7 +12,7 @@ module Metazilla
       if value.present?
         _meta_store[:app_title] = value
       else
-        _meta_store[:app_title] || _meta_lookup("app")
+        _meta_store[:app_title] || _meta_lookup("application")
       end
     end
 
