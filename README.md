@@ -18,13 +18,13 @@ And then execute:
 
 ### Title
 
-`title "My page"` to set page title.
+`title("My page")` to set page title.
 
 `title` to get page title.
 
-`app_title "My app"` to set application title.
+`app_title("My app")` to set application title.
 
-`app title` to get application title.
+`app_title` to get application title.
 
 `full_title` generates full title (page and app title joined).
 
@@ -42,11 +42,11 @@ config/initializers/metazilla.rb:
 
 ### Meta tags
 
-`meta :description, "My app description"` to set meta tag.
+`meta(:description, "My app description")` to set meta tag.
 
-`meta :description` to get meta tag.
+`meta(:description)` to get meta tag.
 
-`meta_tag :description` generates `<meta>` tag. Place this in your layout.
+`meta_tag(:description)` generates `<meta>` tag. Place this in your layout.
 
 ### I18n
 
