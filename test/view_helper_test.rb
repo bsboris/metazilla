@@ -116,11 +116,17 @@ class ViewHelperTest < ActionView::TestCase
     assert_equal "My posts list.", meta(:description)
   end
 
-  def test_custom_title_separator
+  def test_custom_title_separator_via_config
     Metazilla.configure { |c| c.separator = " > " }
     set_path "posts", "index"
 
     assert_equal "Posts list > My app", full_title
+  end
+
+  def test_custom_title_separator_via_argument
+    set_path "posts", "index"
+
+    assert_equal "Posts list > My app", full_title(" > ")
   end
 
   def test_lookup_for_mapped_actions

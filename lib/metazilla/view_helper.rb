@@ -20,8 +20,8 @@ module Metazilla
       content_tag :title, full_title
     end
 
-    def full_title
-      [title, app_title].flatten.select { |i| i.present? }.join(Metazilla.configuration.separator)
+    def full_title(separator = Metazilla.configuration.separator)
+      [title, app_title].flatten.select { |i| i.present? }.join(separator)
     end
 
     def meta(name, content = nil)
