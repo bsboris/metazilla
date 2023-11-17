@@ -48,7 +48,7 @@ module Metazilla
       options[:default] = ""
       mapped_action = (Metazilla.configuration.mapping[action_name.to_sym] || action_name)
 
-      t [controller_path.split("/"), mapped_action, key].flatten.join("."), options
+      t [controller_path.split("/"), mapped_action, key].flatten.join("."), **options
     end
   end
 end
